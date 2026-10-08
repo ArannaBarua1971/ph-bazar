@@ -10,7 +10,7 @@ function Navbar() {
   
   return (
     <div>
-      <div className="mx-auto flex h-14 items-center justify-between px-4">
+      <div className="mx-auto flex h-14 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-color">
             <span className="text-sm">
@@ -48,7 +48,7 @@ function Navbar() {
         <Loading/>
       ) : (
         <nav className="border-b border-gray-100">
-          <div className="mx-auto px-4">
+          <div className="mx-auto ">
             <ul className="flex h-9 items-center gap-6 overflow-x-auto">
               {navItems.map((item) => (
                 <li key={item.id} className="shrink-0">

@@ -18,6 +18,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+        />
+      </head>
       <body className="min-h-full flex flex-col px-[154px]">
         <Suspense fallback={<Loading />}>
           <Navbar />
