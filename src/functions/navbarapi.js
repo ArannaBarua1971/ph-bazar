@@ -7,10 +7,32 @@ export function useCategories() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/categories`)
-      .then((res) => res.json())
-      .then((data) => setData(data))
-      .finally(() => setLoading(false));
+    async function fetchCategories() {
+      const apis = [
+        `${process.env.NEXT_PUBLIC_API1_BASE_URL}/categories`,
+        `${process.env.NEXT_PUBLIC_API2_BASE_URL}/categories`,
+      ];
+
+      try {
+        for (const api of apis) {
+          try {
+            const res = await fetch(api);
+
+            if (!res.ok) continue;
+
+            const result = await res.json();
+            setData(result);
+            return;
+          } catch {
+            continue;
+          }
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchCategories();
   }, []);
 
   return { data, loading };

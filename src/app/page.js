@@ -1,6 +1,7 @@
 import { getData } from "@/functions/ApiCall";
 import ProductCard from "./components/card_design/ProductCard";
 import TitleHeader from "./components/common/TitleHeader";
+import HeroBanner from "./components/HeroBanner/HeroBanner";
 
 export default async function Home() {
   const products = await getData("products");
@@ -14,6 +15,10 @@ export default async function Home() {
   const allproducts = products.slice(0, 33);
   return (
     <div>
+
+      <div className="heroSection">
+          <HeroBanner/>
+      </div>
       <div className="priceUPsection my-8">
         <TitleHeader
           title={
@@ -42,7 +47,7 @@ export default async function Home() {
           ))}
         </div>
       </div>
-      <div className="all_products my-8">
+      <div id="allproduct" className="all_products my-8">
         <TitleHeader title="সব পণ্য" subtitle="মোট ৩৩টি পণ্য দেখানো হচ্ছে" />
         <div className="grid grid-cols-3 gap-[17px]">
           {allproducts.map((p) => (
