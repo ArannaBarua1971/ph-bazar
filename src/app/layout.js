@@ -33,8 +33,8 @@ export default function RootLayout({ children }) {
             <Navbar />
           </div>
           <LatestProductUpdate />
-          <div className="px-[154px] ">{children}</div>
         </Suspense>
+        <div className="px-[154px] ">{children}</div>
       </body>
     </html>
   );

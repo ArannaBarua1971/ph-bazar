@@ -9,48 +9,50 @@ const date = () => {
 const toBanglaNumber = (number) =>
   String(number).replace(/\d/g, (digit) => "০১২৩৪৫৬৭৮৯"[digit]);
 
-const rateValue = (today,yesterday) =>
+const rateValue = (today, yesterday) =>
   Math.abs(((today - yesterday) / yesterday) * 100).toFixed(1);
 
-const validateForm = (data) => {
-  if(date.name){
+const validateForm = (data,type="sign-up") => {
+  if (type=="sign-in") {
     if (!data.name.trim()) {
-      return("Name is required");
+      return "Name is required";
     }
-  
+
     if (!/^[a-zA-Z\s]+$/.test(data.name.trim())) {
-      return("Name can only contain letters and spaces");
+      return "Name can only contain letters and spaces";
     }
   }
 
   if (!data.email.trim()) {
-    return("Email is required");
+    return "Email is required";
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-    return("Please enter a valid email address");
+    return "Please enter a valid email address";
   }
 
   if (data.password.length < 8) {
-    return("Password must be at least 8 characters");
+    return "Password must be at least 8 characters";
   }
 
   if (!/[A-Z]/.test(data.password)) {
-    return("Password must contain an uppercase letter");
+    return "Password must contain an uppercase letter";
   }
 
   if (!/[a-z]/.test(data.password)) {
-    return ("Password must contain a lowercase letter");
+    return "Password must contain a lowercase letter";
   }
 
   if (!/[0-9]/.test(data.password)) {
-    return("Password must contain a number");
+    return "Password must contain a number";
   }
 
-  if (data.password !== data.confirmPassword) {
-    return ("Passwords do not match");
+  if (type=="sign-in") {
+    if (data.password !== data.confirmPassword) {
+      return "Passwords do not match";
+    }
   }
 
   return "";
 };
-export { date, toBanglaNumber, rateValue,validateForm };
+export { date, toBanglaNumber, rateValue, validateForm };

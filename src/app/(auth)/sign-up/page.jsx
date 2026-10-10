@@ -4,7 +4,6 @@ import CardLayout from "@/app/components/card_design/CardLayout";
 import TitleHeader from "@/app/components/common/TitleHeader";
 import Input from "@/app/components/form/Input";
 import { signIn, signUp } from "@/lib/auth-client";
-import { useState } from "react";
 import { validateForm } from "@/functions/helper";
 import { toast, Bounce } from "react-toastify";
 function SignUp() {
@@ -131,7 +130,7 @@ function SignUp() {
               অ্যাকাউন্ট আছে?
               <Link
                 href="/sign-in"
-                className="font-medium text-primary-color hover:underline"
+                className="font-medium text-primary-color hover:underline ms-1"
               >
                 সাইন ইন করুন
               </Link>
