@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import CardLayout from "@/app/components/card_design/CardLayout";
 import TitleHeader from "@/app/components/common/TitleHeader";
 import { useSession } from "@/lib/auth-client";
@@ -66,11 +65,10 @@ export default function ProfilePage() {
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
             <div className="flex items-center gap-3">
               <div className="relative h-12 w-14 shrink-0 overflow-hidden rounded-xl bg-[#E8EEE8]">
-                {session?.user?.image ? (
-                  <Image
-                    src="/profile.jpg"
+                {session.user.image ? (
+                  <img
+                    src={session.user.image}
                     alt="Profile picture"
-                    fill
                     className="object-cover"
                   />
                 ) : (

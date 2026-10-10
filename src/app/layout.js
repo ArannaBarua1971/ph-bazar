@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import Loading from "./components/common/Loading";
 import LatestProductUpdate from "./components/LatestProductUpate/LatestProductUpdate";
 import { ToastContainer } from "react-toastify";
+import Footer from "./components/layout/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,6 +36,9 @@ export default function RootLayout({ children }) {
           <LatestProductUpdate />
         </Suspense>
         <div className="px-[154px] ">{children}</div>
+        <div className="px-[154px] bg-white">
+          <Footer />
+        </div>
       </body>
     </html>
   );

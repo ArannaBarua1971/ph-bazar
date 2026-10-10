@@ -8,7 +8,6 @@ import { validateForm } from "@/functions/helper";
 import { toast, Bounce } from "react-toastify";
 function SignIn() {
   const formLabels = [
-
     {
       name: "ইমেইল",
       type: "email",
@@ -40,7 +39,7 @@ function SignIn() {
       const { data: restData, error: signUpError } = await signIn.email({
         email: data.email,
         password: data.password,
-        callbackURL:"/"
+        callbackURL: "/",
       });
 
       if (signUpError) {
@@ -60,6 +59,18 @@ function SignIn() {
       }
     }
   };
+
+  const signInWithGoogle = async () => {
+    const data = await signIn.social({
+      provider: "google",
+    });
+  };
+
+  const signInWithGithub = async () => {
+    const data = await signIn.social({
+        provider: "github"
+    })
+}
   return (
     <main className="flex items-center justify-center py-6 text-primary-text-color">
       <div className="w-full max-w-md">
@@ -91,6 +102,7 @@ function SignIn() {
 
             <div className="grid grid-cols-2 gap-2">
               <button
+                onClick={() => signInWithGoogle()}
                 type="button"
                 className="cursor-pointer flex items-center justify-center gap-1.5 rounded-lg border border-[#DDE5DF] px-2 py-2 text-[11px] font-semibold transition hover:bg-[#F0F5F0]"
               >
@@ -101,6 +113,7 @@ function SignIn() {
               </button>
 
               <button
+              onClick={()=> signInWithGithub()}
                 type="button"
                 className="cursor-pointer flex items-center justify-center gap-1.5 rounded-lg border border-[#DDE5DF] px-2 py-2 text-[11px] font-semibold transition hover:bg-[#F0F5F0]"
               >
@@ -110,12 +123,12 @@ function SignIn() {
             </div>
 
             <p className="pt-1 text-center text-xs">
-              অ্যাকাউন্ট আছে? 
+              অ্যাকাউন্ট আছে?
               <Link
                 href="/sign-up"
                 className="font-medium text-primary-color hover:underline ms-1 "
               >
-                 সাইন আপ করুন
+                সাইন আপ করুন
               </Link>
             </p>
           </form>

@@ -71,11 +71,22 @@ function SignUp() {
         const { data: restData, error: signUpError } = await signIn.email({
           email: data.email,
           password: data.password,
-          callbackURL:"/"
+          callbackURL: "/",
         });
-
       }
     }
+  };
+
+  const signInWithGoogle = async () => {
+    console.log("hi");
+    const data = await signIn.social({
+      provider: "google",
+    });
+  };
+  const signInWithGithub = async () => {
+    const data = await signIn.social({
+      provider: "github",
+    });
   };
   return (
     <main className="flex items-center justify-center py-6 text-primary-text-color">
@@ -108,6 +119,7 @@ function SignUp() {
 
             <div className="grid grid-cols-2 gap-2">
               <button
+                onClick={() => signInWithGoogle()}
                 type="button"
                 className="cursor-pointer flex items-center justify-center gap-1.5 rounded-lg border border-[#DDE5DF] px-2 py-2 text-[11px] font-semibold transition hover:bg-[#F0F5F0]"
               >
@@ -118,6 +130,7 @@ function SignUp() {
               </button>
 
               <button
+                onClick={() => signInWithGithub()}
                 type="button"
                 className="cursor-pointer flex items-center justify-center gap-1.5 rounded-lg border border-[#DDE5DF] px-2 py-2 text-[11px] font-semibold transition hover:bg-[#F0F5F0]"
               >

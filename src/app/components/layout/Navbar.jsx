@@ -21,7 +21,7 @@ function Navbar() {
 
   const authStatus = (
     <>
-      {session==null ? (
+      {!session?.user ? (
         <div className="flex items-center gap-5">
           <Link
             href="/sign-in"
@@ -41,16 +41,16 @@ function Navbar() {
             onClick={() => setShowProfileNav(!showProfileNav)}
           >
             <div className="image">
-              {session.user.image ? (
-                <img className="w-8 h-8 rounded-[10px] object-cover" src={session.user.image}></img>
+              {session?.user?.image ? (
+                <img className="w-8 h-8 rounded-[10px] object-cover" src={session?.user?.image}></img>
               ) : (
                 <p className="bg-primary-color text-white w-8 h-8 rounded-[10px] flex justify-center items-center">
-                  {session.user.name[0]}
+                  {session?.user?.name[0]}
                 </p>
               )}
             </div>
             <div className="name text-sm font-medium flex justify-center items-center">
-              {session.user.name}
+              {session?.user?.name}
               <i className="text-secondary-text-color fa-solid fa-caret-down"></i>
             </div>
           </button>
@@ -59,8 +59,8 @@ function Navbar() {
           >
             <CardLayout>
               <div className="user_info">
-                <p className="text-sm font-semibold">{session.user.name}</p>
-                <p className="text-xs">{session.user.email}</p>
+                <p className="text-sm font-semibold">{session?.user?.name}</p>
+                <p className="text-xs">{session?.user?.email}</p>
               </div>
               <div className="links text-sm  mt-4">
                 <Link href={"/profile"} className="py-2 cursor-pointer" onClick={()=>setShowProfileNav(false)}>
