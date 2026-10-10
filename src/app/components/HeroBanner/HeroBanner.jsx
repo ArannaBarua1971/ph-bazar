@@ -1,5 +1,5 @@
 "use client"
-import { date } from "@/functions/date";
+import { date } from "@/functions/helper";
 import CardLayout from "../card_design/CardLayout";
 import Badge from "../common/Badge";
 import TitleHeader from "../common/TitleHeader";
@@ -12,7 +12,7 @@ function HeroBanner() {
   };
 
   return (
-    <CardLayout style="flex justify-between">
+    <CardLayout style="flex justify-between mt-6">
       <div className="content  ">
         <Badge
           style={

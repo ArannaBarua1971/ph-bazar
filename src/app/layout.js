@@ -4,6 +4,7 @@ import Navbar from "./components/layout/Navbar";
 import { Inter } from "next/font/google";
 import { Suspense } from "react";
 import Loading from "./components/common/Loading";
+import LatestProductUpdate from "./components/LatestProductUpate/LatestProductUpdate";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,11 +25,14 @@ export default function RootLayout({ children }) {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
         />
       </head>
-      <body className="min-h-full flex flex-col px-[154px]">
-        <Suspense fallback={<Loading />}>
-          <Navbar />
+      <body className="min-h-full flex flex-col ">
+        <Suspense fallback={<Loading />} >
+          <div className="px-[154px]">
+            <Navbar />
+          </div>
+          <LatestProductUpdate />
+          <div className="px-[154px]">{children}</div>
         </Suspense>
-        <Suspense fallback={<Loading />}>{children}</Suspense>
       </body>
     </html>
   );
