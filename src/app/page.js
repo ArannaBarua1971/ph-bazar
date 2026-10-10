@@ -14,11 +14,11 @@ export default async function Home() {
     .slice(0, 6);
   const allproducts = products.slice(0, 33);
   return (
-    <div>
-
+    <div className="w-full">
       <div className="heroSection">
-          <HeroBanner/>
+        <HeroBanner />
       </div>
+
       <div className="priceUPsection my-8">
         <TitleHeader
           title={
@@ -27,12 +27,13 @@ export default async function Home() {
             </>
           }
         />
-        <div className="grid grid-cols-3 gap-[17px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[17px]">
           {priceUpProducts.map((p) => (
             <ProductCard key={p.id} data={p} />
           ))}
         </div>
       </div>
+
       <div className="priceDownsection my-8">
         <TitleHeader
           title={
@@ -41,15 +42,16 @@ export default async function Home() {
             </>
           }
         />
-        <div className="grid grid-cols-3 gap-[17px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[17px]">
           {priceDownProducts.map((p) => (
             <ProductCard key={p.id} data={p} />
           ))}
         </div>
       </div>
+
       <div id="allproduct" className="all_products my-8">
         <TitleHeader title="সব পণ্য" subtitle="মোট ৩৩টি পণ্য দেখানো হচ্ছে" />
-        <div className="grid grid-cols-3 gap-[17px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[17px]">
           {allproducts.map((p) => (
             <ProductCard key={p.id} data={p} />
           ))}

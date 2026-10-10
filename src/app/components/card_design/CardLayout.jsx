@@ -1,8 +1,10 @@
 import React from "react";
 
-function CardLayout({ children ,style }) {
+function CardLayout({ children, style }) {
   return (
-    <div className={`rounded-[24px] border border-[#DDE5DF] bg-[#FCFEFC] p-6 shadow-sm ${style}`}>
+    <div
+      className={`rounded-2xl border border-[#DDE5DF] bg-[#FCFEFC] p-4 shadow-sm sm:rounded-[24px] sm:p-5 md:p-6 ${style}`}
+    >
       {children}
     </div>
   );

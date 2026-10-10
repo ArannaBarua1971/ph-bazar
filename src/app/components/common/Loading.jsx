@@ -2,7 +2,7 @@ import React from 'react'
 
 function Loading() {
   return (
-    <div>
+    <div className='py-10 flex justify-center items-center'>
        loading....
     </div>
   )

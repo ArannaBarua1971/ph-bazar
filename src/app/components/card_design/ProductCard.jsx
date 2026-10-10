@@ -5,37 +5,49 @@ function ProductCard({ data }) {
   const rateStatus = data.today > data.yesterday;
 
   return (
-    <Link href={`/productDetails/${data.id}`}>
-      <CardLayout>
-        <div className="flex items-center gap-5">
-          <div className="flex h-20 w-20 items-center justify-center rounded-[18px] bg-[#F1F5F1] text-4xl">
+    <Link href={`/productDetails/${data.id}`} className="block h-full">
+      <CardLayout style="h-full !p-3 sm:!p-5">
+        <div className="flex items-center gap-3 sm:gap-5">
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[#F1F5F1] text-3xl sm:h-20 sm:w-20 sm:rounded-[18px] sm:text-4xl">
             {data.image}
           </div>
 
-          <div>
-            <h3 className="text-[18px] font-semibold text-primary-text-color">
+          <div className="min-w-0 flex-1">
+            <h3 className="break-words text-base font-semibold text-primary-text-color sm:text-[18px]">
               {data.nameBn}
             </h3>
-            <p className="text-[12px] text-secondary-text-color">প্রতি কেজি</p>
+            <p className="mt-1 text-[11px] text-secondary-text-color sm:text-[12px]">
+              প্রতি কেজি
+            </p>
           </div>
         </div>
 
-        <div className="mt-5 flex items-end justify-between">
-          <div>
-            <p className="text-[12px] text-primary-text-color">আজকের দাম</p>
-            <p className="text-[20px] font-bold text-primary-text-color">
+        <div className="mt-4 flex flex-wrap items-end justify-between gap-3 sm:mt-5">
+          <div className="min-w-0">
+            <p className="text-[11px] text-primary-text-color sm:text-[12px]">
+              আজকের দাম
+            </p>
+            <p className="text-lg font-bold text-primary-text-color sm:text-[20px]">
               {toBanglaNumber(data.today)}
-              <span className="text-[14px] ms-1 font-medium">টাকা</span>
+              <span className="ms-1 text-xs font-medium sm:text-[14px]">
+                টাকা
+              </span>
             </p>
           </div>
 
           <div
-            className={`rounded-full bg-[#F1F5F1] px-3 py-1 flex justify-center text-[12px] font-semibold ${rateStatus ? "text-seondary-color" : data.today == data.yesterday ? "text-primary-text-color" : "text-primary-color"}`}
+            className={`flex shrink-0 items-center justify-center rounded-full bg-[#F1F5F1] px-2 py-1 text-[10px] font-semibold sm:px-3 sm:text-[12px] ${
+              rateStatus
+                ? "text-seondary-color"
+                : data.today === data.yesterday
+                  ? "text-primary-text-color"
+                  : "text-primary-color"
+            }`}
           >
-            <span className="font-semibold text-[12px] me-1">
-              {rateStatus ? "▲" : data.today == data.yesterday ? "—" : "▼"}
+            <span className="me-1 text-[10px] font-semibold sm:text-[12px]">
+              {rateStatus ? "▲" : data.today === data.yesterday ? "—" : "▼"}
             </span>
-            {toBanglaNumber(rateValue(data.today,data.yesterday))}%
+            {toBanglaNumber(rateValue(data.today, data.yesterday))}%
           </div>
         </div>
       </CardLayout>

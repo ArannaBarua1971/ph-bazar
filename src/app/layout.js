@@ -27,18 +27,20 @@ export default function RootLayout({ children }) {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
         />
       </head>
-      <body className="min-h-full flex flex-col ">
+      <body className="min-h-full flex flex-col">
         <ToastContainer />
         <Suspense fallback={<Loading />}>
-          <div className="px-[154px] bg-white">
+          <div className="px-4 sm:px-8 md:px-12 lg:px-20 xl:px-[154px] bg-white">
             <Navbar />
           </div>
           <LatestProductUpdate />
+          <div className="px-4 sm:px-8 md:px-12 lg:px-20 xl:px-[154px]">
+            {children}
+          </div>
+          <div className="px-4 sm:px-8 md:px-12 lg:px-20 xl:px-[154px] bg-white">
+            <Footer />
+          </div>
         </Suspense>
-        <div className="px-[154px] ">{children}</div>
-        <div className="px-[154px] bg-white">
-          <Footer />
-        </div>
       </body>
     </html>
   );
