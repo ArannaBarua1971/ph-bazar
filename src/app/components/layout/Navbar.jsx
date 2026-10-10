@@ -3,13 +3,14 @@ import { useCategories } from "@/functions/navbarapi";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Loading from "../common/Loading";
-
+import Button from "../common/Button";
+import { date } from "@/functions/helper";
 function Navbar() {
-  const { data: navItems, loading: isloading } =useCategories();
-  const pathname=usePathname();
-  
+  const { data: navItems, loading: isloading } = useCategories();
+  const pathname = usePathname();
+
   return (
-    <div>
+    <div >
       <div className="mx-auto flex h-14 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-color">
@@ -23,7 +24,7 @@ function Navbar() {
               বাজার দর
             </h1>
             <p className="text-[10px] text-secondary-text-color">
-              বুধবার, ৮ অক্টোবর, ২০২৬
+              {date()}
             </p>
           </div>
         </Link>
@@ -31,21 +32,20 @@ function Navbar() {
         <div className="flex items-center gap-5">
           <Link
             href="/login"
-            className="text-xs font-medium text-gray-700 hover:text-green-600"
+            className="text-sm font-semibold text-gray-700 hover:text-primary-color"
           >
-            লগইন
+            সাইন ইন
           </Link>
 
           <Link
-            href="/subscribe"
-            className="rounded-md bg-green-600 px-4 py-2 text-[11px] font-medium text-white hover:bg-green-700"
+            href="/sign-up"
           >
-            সাবস্ক্রাইব
+            <Button>সাইন আপ</Button>
           </Link>
         </div>
       </div>
       {isloading ? (
-        <Loading/>
+        <Loading />
       ) : (
         <nav className="border-b border-gray-100">
           <div className="mx-auto ">
@@ -54,7 +54,7 @@ function Navbar() {
                 <li key={item.id} className="shrink-0">
                   <Link
                     href={`/category/${item.slug}`}
-                    className={`${pathname==`/category/${item.slug}`?"text-primary-color":""} flex items-center gap-1.5 text-[12px] font-semibold  transition hover:text-green-600`}
+                    className={`${pathname == `/category/${item.slug}` ? "text-primary-color" : ""} flex items-center gap-1.5 text-[12px] font-semibold  transition hover:text-green-600`}
                   >
                     <span className="text-[9px]">{item.icon}</span>
                     {item.nameBn}

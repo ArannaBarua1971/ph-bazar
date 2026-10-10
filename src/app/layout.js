@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import { Suspense } from "react";
 import Loading from "./components/common/Loading";
 import LatestProductUpdate from "./components/LatestProductUpate/LatestProductUpdate";
+import { ToastContainer } from "react-toastify";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,12 +27,13 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="min-h-full flex flex-col ">
-        <Suspense fallback={<Loading />} >
-          <div className="px-[154px]">
+        <ToastContainer />
+        <Suspense fallback={<Loading />}>
+          <div className="px-[154px] bg-white">
             <Navbar />
           </div>
           <LatestProductUpdate />
-          <div className="px-[154px]">{children}</div>
+          <div className="px-[154px] ">{children}</div>
         </Suspense>
       </body>
     </html>
