@@ -1,11 +1,13 @@
 import { NextResponse } from "next/server";
+import {  NextResponse } from "next/server";
+import { headers } from "next/headers";
+import { auth } from "./lib/auth";
+export async function proxy(request) {
+   const session = await auth.api.getSession({
+        headers: await headers()
+    })
 
-export function proxy(request) {
-  const hasSessionCookie =
-    request.cookies.has("better-auth.session_token") ||
-    request.cookies.has("__Secure-better-auth.session_token");
-
-  if (!hasSessionCookie) {
+  if (!session) {
     return NextResponse.redirect(new URL("/sign-in", request.url));
   }
 
